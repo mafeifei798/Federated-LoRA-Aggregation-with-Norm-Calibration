@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project": "Adaptive Federated LoRA Aggregation",
+  "source_repository": "https://github.com/mafeifei798/Robust-and-Sparse-PCA",
+  "core_source_files": [
+    {
+      "path": "src/rspca/federated.py",
+      "original_sha256": "e15adafe7683dafb9c2ddbd6d5abe7bacae956098d5340699df2368665c36ccd",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    },
+    {
+      "path": "src/rspca/federated_cuda.py",
+      "original_sha256": "35829f8196262adfeb3efece112c4a272b3677c85144e70958cd3eef0ac8a25f",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    },
+    {
+      "path": "src/rspca/paper_federated.py",
+      "original_sha256": "db1fef230c2826f83bb3de35c85301dfc39e2a027d243cd5bf555dfae8ca69e8",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    },
+    {
+      "path": "experiments/fedrpca_parameter_only_tn48.py",
+      "original_sha256": "649eb5b0ed1c4d4f2a657351d82b7937b352644bb396c2e53cadad88e5d85402",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    },
+    {
+      "path": "experiments/__init__.py",
+      "original_sha256": "68e07d373c7156c3a8d83d56eafa359fbb581ad8ec540b89ddfbe68cce2ab2fd",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    },
+    {
+      "path": "LICENSE",
+      "original_sha256": "066557a1310d37a26021574e66f96d3a2e076ec7e58ffbab3242129a56d4bb4f",
+      "copy_policy": "Algorithm source preserved; packaging may normalize trailing blank lines."
+    }
+  ],
+  "historical_vp": {
+    "source_path": "notebooks/legacy/original_fedrpca-eurosat-3.ipynb",
+    "source_sha256": "5cdc2fc2a4be5983f9cf9d0f5fec209f0608d1251160076d400211adb38c990f",
+    "extracted_function_sha256": {
+      "soft_threshold": "3650e6f02ab5b7065474e7a11163074bb596607415d9da1e06668a1f816a7f7e",
+      "truncated_svd_rank_r": "59e33a95c420378ba158d236724a5e06f5dfa89c9844d206cb5fc60a6e139eed",
+      "_robust_scale_rows": "1fc3478a50431abc4d1ec43799077aa69c594d8b0c519fa2045eca38e69598a4",
+      "_clean_matrix": "5f4dc0288f963c34d51d3120958dfa56e6064565e1f7ac97220fe9b226fa3a2d",
+      "_svd_soft_rpca": "0ab9597fcd09c3ffc355d7541fbf86e4beacc18bcd01fa6f977e08ea54884653",
+      "robust_rpca_vp": "b16ba5d8fc9d5930e879685ac087b0d450b7c2b8aee78046b48faa82e9f5eb4c",
+      "_adaptive_beta_sparse": "ff917b0709443a8df4918fcf635975f6146a2075e81c1e3875537588becf8e16",
+      "_clip_norm": "1dc061694578e9ed6ce0ea331f2921ca7e9e329f4ebf527fd9785472a00d225d",
+      "fedrpca_aggregate": "d3511c833073b3a6b94e20e62ae98f0994b44a843402c64c69a7297de193c680"
+    },
+    "formula_edits": false
+  },
+  "packaging_changes": [
+    "Minimal package initializer to exclude unrelated projects",
+    "Install metadata, focused unit tests and compact result summary"
+  ],
+  "raw_evidence": "Preserved separately; not part of this compact personal-use upload.",
+  "training_or_benchmark_rerun": false
+}
