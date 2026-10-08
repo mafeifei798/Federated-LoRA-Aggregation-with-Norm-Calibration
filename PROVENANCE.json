@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "project": "Adaptive Federated LoRA Aggregation",
+  "project": "Federated LoRA Aggregation with Norm Calibration",
   "source_repository": "https://github.com/mafeifei798/Robust-and-Sparse-PCA",
   "core_source_files": [
     {

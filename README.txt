@@ -1,5 +1,5 @@
-Adaptive Federated LoRA Aggregation
-==================================
+Federated LoRA Aggregation with Norm Calibration
+================================================
 University of Macau summer research | Jun-Oct 2025 (original project period)
 
 This repository collects the project's aggregation code and saved exploratory
