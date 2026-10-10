@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 
-from experiments import fedrpca_parameter_only_tn48 as tn
+from rspca import norm_calibration as tn
 
 
 def test_direction_and_radius_with_exact_sparse_guard():

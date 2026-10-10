@@ -1,7 +1,7 @@
 """Historical VP solver checks, separate from the saved PCP/TN benchmark."""
 import numpy as np
 
-from experiments import legacy_fedrpca_vp as legacy
+from rspca import fedrpca_variable_projection as legacy
 
 
 def test_truncated_rank_and_shapes():

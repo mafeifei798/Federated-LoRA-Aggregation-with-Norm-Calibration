@@ -13,8 +13,8 @@ dependencies = ["numpy", "scipy", "torch"]
 test = ["pytest"]
 
 [tool.setuptools]
-packages = ["rspca", "experiments"]
-package-dir = {rspca = "src/rspca", experiments = "experiments"}
+packages = ["rspca"]
+package-dir = {rspca = "src/rspca"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
