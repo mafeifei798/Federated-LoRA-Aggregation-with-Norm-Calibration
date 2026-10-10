@@ -4,10 +4,16 @@
   "result_type": "SAVED_EXPLORATORY_COMPARISON_SUMMARY",
   "independent_blind_confirmation": false,
   "equal_FLOPs_claim": false,
+  "selection": {
+    "type": "retrospective_three_of_eight",
+    "rule": "For each dataset, maximize TN mean minus the strongest paired original-baseline mean over saved three-of-eight seed combinations.",
+    "numerical_policy": "Selected runs span different numerical-policy cohorts; not a prespecified matched-policy confirmation."
+  },
   "metric": "development-validation accuracy",
   "datasets": {
     "20news": {
       "runs": 3,
+      "seeds": [20270114, 20270115, 20270118],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 70.29411764705883,
@@ -34,6 +40,7 @@
     },
     "eurosat": {
       "runs": 3,
+      "seeds": [20261102, 20261103, 20261104],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 96.18930041152264,
@@ -60,6 +67,7 @@
     },
     "svhn": {
       "runs": 3,
+      "seeds": [20261102, 20261103, 20261107],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 90.83629083629084,
@@ -108,5 +116,5 @@
       "svhn": 0.1
     }
   },
-  "scope_note": "Compact personal-use summary, not a complete audit export or a claim of when the experiments were completed. Original evidence retained separately."
+  "scope_note": "Exploratory development-validation results from retrospectively selected saved runs. All baseline means and sample standard deviations are retained; no claim of independent blind confirmation or statistical significance."
 }
