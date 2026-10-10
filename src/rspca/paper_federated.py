@@ -17,10 +17,9 @@ and ``beta_max=None``: this selects the paper's unbounded per-block inverse
 sparse-energy schedule rather than a sample-weighted or clipped extension.
 The separately named CA-RMS extension changes only that beta estimator to the
 weighted RMS/Frobenius energy ratio; it does not change PCP or client training.
-The layer-joint extension retains the paper inverse-energy rule while applying
-one PCP problem to the concatenated Q/V updates for each factor in each GPT-2
-layer, resolving the paper appendix's block-grouping ambiguity without changing
-client training.
+The opt-in layer-joint variant applies the paper inverse-energy rule to
+same-layer Q/V concatenations, separately for A and B factors. It does not
+change client training.
 
 """
 

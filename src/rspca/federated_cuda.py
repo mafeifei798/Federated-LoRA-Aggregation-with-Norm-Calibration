@@ -117,7 +117,7 @@ def _finite_matrices(torch: Any, matrix: Any) -> Any:
 
 
 def _svd_factors(torch: Any, matrix: Any, method: str) -> tuple[Any, Any, Any]:
-    """Exact factors on the input device; CPU is used only by private tests."""
+    """Compute non-truncated SVD factors; CPU execution is reserved for tests."""
     kwargs = {"full_matrices": False}
     if matrix.device.type == "cuda":
         kwargs["driver"] = "gesvd"
@@ -192,7 +192,7 @@ def _stable_norm(torch: Any, matrix: Any, *, l1: bool) -> Any:
 def _solve_torch(
     prepared: _PreparedBatch, *, torch: Any, device: Any, svd_method: str
 ) -> list[RPCAResult]:
-    """Shared kernel, privately CPU-testable; public callers enforce CUDA."""
+    """Shared float64 kernel; public entry points require CUDA."""
     if svd_method not in ("qr", "direct"):
         raise ValueError("svd_method must be 'qr' or 'direct'")
     tensor = lambda value: torch.as_tensor(value, dtype=torch.float64, device=device)

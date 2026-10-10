@@ -1,1 +1,1 @@
-"""Reproducible command-line experiments for :mod:`rspca`."""
+"""Federated LoRA aggregation implementations."""

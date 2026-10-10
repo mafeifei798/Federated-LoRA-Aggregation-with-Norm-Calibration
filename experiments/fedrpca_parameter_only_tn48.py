@@ -1,9 +1,9 @@
-"""Parameter-only TN48 ablation, not a new algorithm or accuracy result.
+"""Parameter-only norm calibration for FedRPCA LoRA factor updates.
 
-Reuse one original FR48 solve on the actual client endpoints. Preserve its
-factor directions, replace unguarded norms by twice the raw uniform mean
-delta norm, and keep the uniform classifier. No model/data/feedback API.
-Production arithmetic is CUDA FP64; CPU is limited to explicit tiny tests.
+Rescale eligible updates to twice the uniform client-mean update norm.
+Retain the numerical-zero sparse guard and uniform classifier.
+No task data or model-loss feedback is used by this module.
+Production execution uses CUDA FP64; CPU execution is limited to tiny tests.
 """
 from __future__ import annotations
 
@@ -31,7 +31,12 @@ def finite_state(state):
 
 @torch.no_grad()
 def norm_map(observed, sparse, original, *, device="cuda:0", toy=False):
-    """Exact existing TN rule; no learned coefficient or task-loss selection."""
+    """Rescale eligible updates while retaining nonzero directions and sparse guards.
+
+    The target norm is twice the uniform client-mean update norm. Updates whose
+    normalized sparse-mean norm is at most FP64 epsilon remain unchanged.
+    No learned coefficient or task-loss feedback is used.
+    """
     arrays = [np.asarray(v) for v in (observed, sparse, original)]
     m, s, u = arrays
     require(type(toy) is bool and m.ndim == 3 and min(m.shape) > 0
@@ -138,10 +143,12 @@ def assemble(parent, local_states, fr_state, sparse, *, adapter_pairs,
 
 def from_fr48(fr_aggregate, parent, local_states, *, adapter_pairs,
               classifier_keys, device="cuda:0", toy=False):
-    """Native parameter-only hook: one pinned original FR48 callback.
+    """Apply norm calibration after a caller-supplied FedRPCA aggregation callback.
 
-    The callback must return state, snapshot, diagnostics like native context.fr.
-    No GTN module, backend, dataset or feedback callback is accepted.
+    The callback receives ``parent`` and ``local_states`` and returns an object
+    with ``state``, ``snapshot`` arrays named ``observed``, ``low_rank`` and
+    ``sparse``, and ``diagnostics["cuda_aggregation"]``. The caller selects the
+    solver; this hook validates the returned parameter bank and reconstruction.
     """
     require(callable(fr_aggregate), "original FR48 parameter-only callback")
     base = fr_aggregate(parent, local_states)

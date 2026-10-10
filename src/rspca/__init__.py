@@ -1,1 +1,1 @@
-"""Federated aggregation subset; no unrelated project imports or launch side effects."""
+"""Federated LoRA aggregation utilities."""

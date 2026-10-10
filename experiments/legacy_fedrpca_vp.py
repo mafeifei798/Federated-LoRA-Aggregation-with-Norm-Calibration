@@ -1,7 +1,8 @@
-"""Historical variable-projection FedRPCA functions, extracted without formula edits.
+"""Historical fixed-rank variable-projection FedRPCA implementation.
 
-This legacy solver is not a substitute for the current PCP/TN benchmark.
-Rank is an explicit fixed input; adaptive kappa/beta is not adaptive LoRA rank.
+This solver is separate from the PCP implementation used in the saved TN
+comparison. The caller supplies the decomposition rank; adaptive sparsity
+thresholds and mixing weights do not change the LoRA rank.
 """
 from __future__ import annotations
 
@@ -79,7 +80,7 @@ def robust_rpca_vp(X: np.ndarray, rank: int, kappa: float | None = None,
             if abs(prev_obj - obj) / (prev_obj + 1e-12) < tol:
                 break
             prev_obj = obj
-            # Continuation: gradually decrease kappa to improve sparsity accuracy
+            # Continuation: gradually reduce kappa to its target value.
             if continuation:
                 kappa_now = max(kappa, 0.9 * kappa_now)
         # De-normalize

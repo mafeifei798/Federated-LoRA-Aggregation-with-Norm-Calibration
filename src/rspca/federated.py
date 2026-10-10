@@ -873,18 +873,17 @@ def fedrpca_aggregate(
     cannot be combined with a beta clip or reliability gate, so there is no
     hidden tunable mixing coefficient.
 
-    The optional reliability gate is a 2025-context extension.  It uses
+    The optional reliability gate uses
 
     ``g_res = clip(1 - residual / residual_gate_threshold, 0, 1)``
     ``g_cos = clip((cos(L)-cos(S)) / cosine_gap_target, 0, 1)``
     ``g = g_res * g_cos`` and ``beta_eff = 1 + g*(beta_base - 1)``.
 
-    Thus either a poor numerical decomposition or a failure to separate common
-    from client-specific cosine structure smoothly recovers unamplified
-    aggregation.  This is a testable heuristic, not a convergence claim. A
-    50-seed synthetic evaluation found a practically negligible effect, so callers
-    should treat it as an experimental ablation rather than an established
-    improvement.
+    A poor decomposition or weak common-versus-client-specific cosine
+    separation reduces sparse amplification toward the unamplified update.
+    This is an experimental heuristic, not a convergence guarantee. A separate
+    historical 50-seed synthetic evaluation found a practically negligible
+    effect; it is distinct from the saved TN comparison.
 
     ``adapter_keys`` is explicit by design.  If omitted, conservative LoRA A/B
     name inference is used.  Every selected key is decomposed independently;
