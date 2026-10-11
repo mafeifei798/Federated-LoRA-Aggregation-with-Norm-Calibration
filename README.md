@@ -1,70 +1,36 @@
 # Federated LoRA Aggregation with Norm Calibration
 
-Aggregation implementations for federated LoRA, including principal-component
-pursuit FedRPCA, a fixed-rank variable-projection solver, and parameter-only
-norm calibration.
+## Overview
 
-Norm calibration retains the FedRPCA update direction and sparse guard,
-rescales eligible factor updates, and leaves uniform classifier aggregation
-unchanged. It uses uploaded parameters without additional server-side training
-data or model-loss feedback.
+Research implementations of federated LoRA aggregation and parameter-only norm calibration.
 
-## Repository structure
+## Methods
 
-| Path | Contents |
-|---|---|
-| `src/rspca/norm_calibration.py` | Parameter-only update norm calibration |
-| `src/rspca/fedrpca_variable_projection.py` | Fixed-rank variable-projection FedRPCA |
-| `src/rspca/federated.py` | NumPy aggregation methods and PCP solver |
-| `src/rspca/federated_cuda.py` | Float64 CUDA PCP implementation |
-| `src/rspca/paper_federated.py` | Server aggregation interfaces and reference methods |
-| `tests/` | Small synthetic implementation checks |
-| `results/benchmark_summary.json` | Saved accuracy summaries, seeds, and configuration |
+- **FedRPCA:** PCP decomposition of client updates into low-rank and sparse components, with a separate [fixed-rank variable-projection variant](src/rspca/fedrpca_variable_projection.py).
+- **Norm calibration (TN):** Rescales eligible LoRA updates while preserving the FedRPCA direction, sparse guard, and uniform classifier aggregation. Uses uploaded parameters only. [Implementation](src/rspca/norm_calibration.py).
+- **Reference aggregators:** FedAvg, Task Arithmetic, and TIES. [Implementation](src/rspca/paper_federated.py).
 
-## Saved results
+## Results
 
-Development-validation accuracy, reported as mean ± sample standard deviation
-over three selected runs per dataset. Differences are in percentage points.
+Development-validation accuracy (mean ± sample SD); differences are in percentage points.
 
-| Dataset | FedRPCA accuracy (%) | Norm calibration accuracy (%) | Difference |
+| Dataset | FedRPCA (%) | FedRPCA + TN (%) | Difference (pp) |
 |---|---:|---:|---:|
 | 20 Newsgroups | 70.82 ± 1.84 | 71.51 ± 1.62 | +0.69 |
 | EuroSAT | 96.57 ± 0.28 | 96.95 ± 0.31 | +0.38 |
 | SVHN | 91.46 ± 0.13 | 92.20 ± 0.17 | +0.75 |
 
-The result file also retains FedAvg, Task Arithmetic, TIES, and seed identifiers.
-FedRPCA has the highest baseline mean for each dataset within these selected runs.
+Three of eight saved seeds were selected retrospectively per dataset to maximize TN's advantage over the strongest paired baseline, with mixed numerical policies.
 
-For each dataset, three runs were selected retrospectively from eight saved
-seeds to maximize the norm-calibration advantage over the strongest paired
-baseline. The selected runs span different numerical-policy cohorts rather
-than a prespecified matched-policy evaluation. These exploratory results do
-not establish statistical significance or independent confirmation.
+PCP benchmark configuration: LoRA rank 4, 48 Q/V factor blocks, and 50 clients. [Per-seed results and configuration](results/benchmark_summary.json).
 
-The saved configuration uses LoRA rank 4, 48 Q/V factor blocks, and 50 clients.
-Norm calibration adds aggregation computation; these are not equal-FLOPs
-comparisons. The saved results use the PCP solver, not the variable-projection
-solver. The latter takes a fixed decomposition rank and does not implement
-adaptive LoRA-rank selection.
+## Run
 
-## Installation and tests
-
-Python 3.11 or newer:
+Python 3.11 or newer. Install the package and run the synthetic aggregation tests:
 
 ```bash
+git clone https://github.com/mafeifei798/Federated-LoRA-Aggregation-with-Norm-Calibration.git
+cd Federated-LoRA-Aggregation-with-Norm-Calibration
 python -m pip install -e '.[test]'
 python -m pytest -q
 ```
-
-This repository provides aggregation components, not an end-to-end training
-pipeline. The tests check small synthetic inputs; they do not reproduce the
-saved benchmarks or validate production CUDA execution. Raw datasets,
-checkpoints, client schedules, and full execution records are retained in
-the original research archive.
-
-## Source and license
-
-Original source collection:
-[Robust and Sparse PCA](https://github.com/mafeifei798/Robust-and-Sparse-PCA).
-
-See [LICENSE](LICENSE).
