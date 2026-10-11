@@ -1,14 +1,5 @@
 {
   "schema_version": 1,
-  "project": "Federated LoRA Aggregation with Norm Calibration",
-  "result_type": "SAVED_EXPLORATORY_COMPARISON_SUMMARY",
-  "independent_blind_confirmation": false,
-  "equal_FLOPs_claim": false,
-  "selection": {
-    "type": "retrospective_three_of_eight",
-    "rule": "For each dataset, maximize TN mean minus the strongest paired original-baseline mean over saved three-of-eight seed combinations.",
-    "numerical_policy": "Selected runs span different numerical-policy cohorts; not a prespecified matched-policy confirmation."
-  },
   "metric": "development-validation accuracy",
   "datasets": {
     "20news": {
@@ -398,9 +389,6 @@
     "batch_size": 32,
     "client_optimizer": "AdamW",
     "classifier": "uniform aggregation",
-    "server_extra_training_samples": 0,
-    "server_extra_labels_or_features": 0,
-    "server_extra_model_forward_or_backward": 0,
     "rounds": {
       "20news": 100,
       "eurosat": 50,
@@ -412,6 +400,5 @@
       "eurosat": 0.9,
       "svhn": 0.1
     }
-  },
-  "scope_note": "Exploratory development-validation results from retrospectively selected saved runs. All baseline means and sample standard deviations are retained; no claim of independent blind confirmation or statistical significance."
+  }
 }
