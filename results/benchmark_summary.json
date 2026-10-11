@@ -13,7 +13,11 @@
   "datasets": {
     "20news": {
       "runs": 3,
-      "seeds": [20270114, 20270115, 20270118],
+      "seeds": [
+        20270114,
+        20270115,
+        20270118
+      ],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 70.29411764705883,
@@ -36,11 +40,110 @@
           "sample_SD_pp": 1.617736182928109
         }
       },
-      "TN_minus_original_FedRPCA_pp": 0.6862745098039216
+      "TN_minus_original_FedRPCA_pp": 0.6862745098039216,
+      "per_seed": [
+        {
+          "seed": 20270114,
+          "numerical_cohort": "certified_five",
+          "methods": {
+            "fedavg": {
+              "correct": 1202,
+              "total": 1700,
+              "accuracy_percent": 70.70588235294117
+            },
+            "native_fr48": {
+              "correct": 1214,
+              "total": 1700,
+              "accuracy_percent": 71.41176470588235
+            },
+            "ta": {
+              "correct": 1203,
+              "total": 1700,
+              "accuracy_percent": 70.76470588235294
+            },
+            "ties": {
+              "correct": 1193,
+              "total": 1700,
+              "accuracy_percent": 70.17647058823529
+            },
+            "tn48": {
+              "correct": 1216,
+              "total": 1700,
+              "accuracy_percent": 71.52941176470588
+            }
+          }
+        },
+        {
+          "seed": 20270115,
+          "numerical_cohort": "certified_five",
+          "methods": {
+            "fedavg": {
+              "correct": 1157,
+              "total": 1700,
+              "accuracy_percent": 68.05882352941177
+            },
+            "native_fr48": {
+              "correct": 1169,
+              "total": 1700,
+              "accuracy_percent": 68.76470588235294
+            },
+            "ta": {
+              "correct": 1176,
+              "total": 1700,
+              "accuracy_percent": 69.17647058823529
+            },
+            "ties": {
+              "correct": 1165,
+              "total": 1700,
+              "accuracy_percent": 68.52941176470588
+            },
+            "tn48": {
+              "correct": 1188,
+              "total": 1700,
+              "accuracy_percent": 69.88235294117646
+            }
+          }
+        },
+        {
+          "seed": 20270118,
+          "numerical_cohort": "certified_five",
+          "methods": {
+            "fedavg": {
+              "correct": 1226,
+              "total": 1700,
+              "accuracy_percent": 72.11764705882354
+            },
+            "native_fr48": {
+              "correct": 1229,
+              "total": 1700,
+              "accuracy_percent": 72.29411764705883
+            },
+            "ta": {
+              "correct": 1228,
+              "total": 1700,
+              "accuracy_percent": 72.23529411764706
+            },
+            "ties": {
+              "correct": 1231,
+              "total": 1700,
+              "accuracy_percent": 72.41176470588235
+            },
+            "tn48": {
+              "correct": 1243,
+              "total": 1700,
+              "accuracy_percent": 73.11764705882354
+            }
+          }
+        }
+      ]
     },
     "eurosat": {
       "runs": 3,
-      "seeds": [20261102, 20261103, 20261104],
+      "seeds": [
+        20261102,
+        20261103,
+        20261104
+      ],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 96.18930041152264,
@@ -63,11 +166,110 @@
           "sample_SD_pp": 0.3087242688643764
         }
       },
-      "TN_minus_original_FedRPCA_pp": 0.3786008230452675
+      "TN_minus_original_FedRPCA_pp": 0.3786008230452675,
+      "per_seed": [
+        {
+          "seed": 20261102,
+          "numerical_cohort": "original_three",
+          "methods": {
+            "fedavg": {
+              "correct": 3887,
+              "total": 4050,
+              "accuracy_percent": 95.9753086419753
+            },
+            "native_fr48": {
+              "correct": 3899,
+              "total": 4050,
+              "accuracy_percent": 96.27160493827161
+            },
+            "ta": {
+              "correct": 3817,
+              "total": 4050,
+              "accuracy_percent": 94.24691358024691
+            },
+            "ties": {
+              "correct": 3862,
+              "total": 4050,
+              "accuracy_percent": 95.35802469135803
+            },
+            "tn48": {
+              "correct": 3914,
+              "total": 4050,
+              "accuracy_percent": 96.64197530864197
+            }
+          }
+        },
+        {
+          "seed": 20261103,
+          "numerical_cohort": "original_three",
+          "methods": {
+            "fedavg": {
+              "correct": 3899,
+              "total": 4050,
+              "accuracy_percent": 96.27160493827161
+            },
+            "native_fr48": {
+              "correct": 3922,
+              "total": 4050,
+              "accuracy_percent": 96.8395061728395
+            },
+            "ta": {
+              "correct": 3860,
+              "total": 4050,
+              "accuracy_percent": 95.30864197530865
+            },
+            "ties": {
+              "correct": 3859,
+              "total": 4050,
+              "accuracy_percent": 95.28395061728395
+            },
+            "tn48": {
+              "correct": 3939,
+              "total": 4050,
+              "accuracy_percent": 97.25925925925925
+            }
+          }
+        },
+        {
+          "seed": 20261104,
+          "numerical_cohort": "certified_five",
+          "methods": {
+            "fedavg": {
+              "correct": 3901,
+              "total": 4050,
+              "accuracy_percent": 96.32098765432099
+            },
+            "native_fr48": {
+              "correct": 3912,
+              "total": 4050,
+              "accuracy_percent": 96.5925925925926
+            },
+            "ta": {
+              "correct": 3889,
+              "total": 4050,
+              "accuracy_percent": 96.0246913580247
+            },
+            "ties": {
+              "correct": 3896,
+              "total": 4050,
+              "accuracy_percent": 96.19753086419753
+            },
+            "tn48": {
+              "correct": 3926,
+              "total": 4050,
+              "accuracy_percent": 96.93827160493827
+            }
+          }
+        }
+      ]
     },
     "svhn": {
       "runs": 3,
-      "seeds": [20261102, 20261103, 20261107],
+      "seeds": [
+        20261102,
+        20261103,
+        20261107
+      ],
       "methods": {
         "fedavg": {
           "mean_accuracy_percent": 90.83629083629084,
@@ -90,7 +292,102 @@
           "sample_SD_pp": 0.1736965850968636
         }
       },
-      "TN_minus_original_FedRPCA_pp": 0.7462007462007462
+      "TN_minus_original_FedRPCA_pp": 0.7462007462007462,
+      "per_seed": [
+        {
+          "seed": 20261102,
+          "numerical_cohort": "original_three",
+          "methods": {
+            "fedavg": {
+              "correct": 9999,
+              "total": 10989,
+              "accuracy_percent": 90.990990990991
+            },
+            "native_fr48": {
+              "correct": 10065,
+              "total": 10989,
+              "accuracy_percent": 91.5915915915916
+            },
+            "ta": {
+              "correct": 9888,
+              "total": 10989,
+              "accuracy_percent": 89.98088998088998
+            },
+            "ties": {
+              "correct": 9234,
+              "total": 10989,
+              "accuracy_percent": 84.02948402948402
+            },
+            "tn48": {
+              "correct": 10154,
+              "total": 10989,
+              "accuracy_percent": 92.4014924014924
+            }
+          }
+        },
+        {
+          "seed": 20261103,
+          "numerical_cohort": "original_three",
+          "methods": {
+            "fedavg": {
+              "correct": 9997,
+              "total": 10989,
+              "accuracy_percent": 90.97279097279097
+            },
+            "native_fr48": {
+              "correct": 10050,
+              "total": 10989,
+              "accuracy_percent": 91.45509145509145
+            },
+            "ta": {
+              "correct": 9800,
+              "total": 10989,
+              "accuracy_percent": 89.18008918008918
+            },
+            "ties": {
+              "correct": 9493,
+              "total": 10989,
+              "accuracy_percent": 86.38638638638639
+            },
+            "tn48": {
+              "correct": 10125,
+              "total": 10989,
+              "accuracy_percent": 92.13759213759214
+            }
+          }
+        },
+        {
+          "seed": 20261107,
+          "numerical_cohort": "certified_five",
+          "methods": {
+            "fedavg": {
+              "correct": 9950,
+              "total": 10989,
+              "accuracy_percent": 90.54509054509055
+            },
+            "native_fr48": {
+              "correct": 10036,
+              "total": 10989,
+              "accuracy_percent": 91.32769132769133
+            },
+            "ta": {
+              "correct": 9531,
+              "total": 10989,
+              "accuracy_percent": 86.73218673218673
+            },
+            "ties": {
+              "correct": 9360,
+              "total": 10989,
+              "accuracy_percent": 85.17608517608518
+            },
+            "tn48": {
+              "correct": 10118,
+              "total": 10989,
+              "accuracy_percent": 92.07389207389207
+            }
+          }
+        }
+      ]
     }
   },
   "configuration": {
