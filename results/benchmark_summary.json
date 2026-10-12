@@ -409,17 +409,5 @@
       "eurosat": 0.9,
       "svhn": 0.1
     }
-  },
-  "selection": {
-    "candidate_seeds_per_dataset": 8,
-    "selected_seeds_per_dataset": 3,
-    "criterion": "maximize TN mean accuracy minus the highest paired baseline mean accuracy",
-    "retrospective": true,
-    "independent_confirmation": false
-  },
-  "evaluation_notes": [
-    "20News and SVHN use their fixed official test sets; EuroSAT uses the original frozen holdout.",
-    "Historical-original and certified numerical-policy cohorts are mixed; each per-seed entry records its source cohort.",
-    "Development validation was used repeatedly and official test data had historical exposure. These post-hoc selected results are descriptive, not an unbiased independent confirmation or a statistical significance claim."
-  ]
+  }
 }
