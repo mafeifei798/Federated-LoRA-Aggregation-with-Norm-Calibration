@@ -26,6 +26,21 @@ TN's mean advantage over the strongest baseline is +0.4735, +0.3704, and +0.5685
 
 PCP benchmark configuration: LoRA rank 4, 48 Q/V factor blocks, and 50 clients. [Per-seed correct/total, accuracy, means, sample SDs, and configuration](results/benchmark_summary.json).
 
+### Rank 8/16 baseline comparison
+
+Final-checkpoint test/holdout accuracy (%), one fixed seed per dataset and rank. The table below includes the four baseline methods.
+
+| Dataset | Rank | FedRPCA (%) | FedAvg (%) | Task Arithmetic (%) | TIES (%) |
+|---|---:|---:|---:|---:|---:|
+| 20 Newsgroups | 8 | 68.8396 | 69.0653 | 69.1981 | 66.5428 |
+| 20 Newsgroups | 16 | 69.1848 | 69.0653 | 69.1317 | 66.5959 |
+| EuroSAT | 8 | 97.4815 | 97.1296 | 94.5926 | 95.3333 |
+| EuroSAT | 16 | 97.8148 | 97.3519 | 95.3889 | 95.5741 |
+| SVHN | 8 | 94.0573 | 93.5464 | 91.2992 | 88.3951 |
+| SVHN | 16 | 94.5759 | 94.2263 | 93.6578 | 89.7933 |
+
+Seeds: 20 Newsgroups `20270117`; EuroSAT/SVHN `20261107`. Training rounds: 100 for 20 Newsgroups and 50 for EuroSAT/SVHN. 20 Newsgroups and SVHN use the official test sets; EuroSAT uses the original frozen holdout. [Correct/total, accuracy, and configuration](results/rank8_rank16_baselines.json).
+
 ## Run
 
 Python 3.11 or newer. Install the package and run the synthetic aggregation tests:

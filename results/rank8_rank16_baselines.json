@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "metric": "test/holdout accuracy",
+  "datasets": {
+    "20news": {
+      "runs_per_rank": 1,
+      "seed": 20270117,
+      "evaluation_split": "official_test",
+      "rounds": 100,
+      "ranks": {
+        "8": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 68.8396176314392,
+              "correct": 5185,
+              "total": 7532
+            },
+            "fedavg": {
+              "accuracy_percent": 69.06532129580457,
+              "correct": 5202,
+              "total": 7532
+            },
+            "ta": {
+              "accuracy_percent": 69.19808815719597,
+              "correct": 5212,
+              "total": 7532
+            },
+            "ties": {
+              "accuracy_percent": 66.54275092936803,
+              "correct": 5012,
+              "total": 7532
+            }
+          }
+        },
+        "16": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 69.18481147105682,
+              "correct": 5211,
+              "total": 7532
+            },
+            "fedavg": {
+              "accuracy_percent": 69.06532129580457,
+              "correct": 5202,
+              "total": 7532
+            },
+            "ta": {
+              "accuracy_percent": 69.13170472650026,
+              "correct": 5207,
+              "total": 7532
+            },
+            "ties": {
+              "accuracy_percent": 66.59585767392458,
+              "correct": 5016,
+              "total": 7532
+            }
+          }
+        }
+      }
+    },
+    "eurosat": {
+      "runs_per_rank": 1,
+      "seed": 20261107,
+      "evaluation_split": "original_frozen_holdout",
+      "rounds": 50,
+      "ranks": {
+        "8": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 97.48148148148148,
+              "correct": 5264,
+              "total": 5400
+            },
+            "fedavg": {
+              "accuracy_percent": 97.12962962962963,
+              "correct": 5245,
+              "total": 5400
+            },
+            "ta": {
+              "accuracy_percent": 94.5925925925926,
+              "correct": 5108,
+              "total": 5400
+            },
+            "ties": {
+              "accuracy_percent": 95.33333333333333,
+              "correct": 5148,
+              "total": 5400
+            }
+          }
+        },
+        "16": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 97.81481481481481,
+              "correct": 5282,
+              "total": 5400
+            },
+            "fedavg": {
+              "accuracy_percent": 97.35185185185185,
+              "correct": 5257,
+              "total": 5400
+            },
+            "ta": {
+              "accuracy_percent": 95.38888888888889,
+              "correct": 5151,
+              "total": 5400
+            },
+            "ties": {
+              "accuracy_percent": 95.57407407407408,
+              "correct": 5161,
+              "total": 5400
+            }
+          }
+        }
+      }
+    },
+    "svhn": {
+      "runs_per_rank": 1,
+      "seed": 20261107,
+      "evaluation_split": "official_test",
+      "rounds": 50,
+      "ranks": {
+        "8": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 94.05731407498463,
+              "correct": 24485,
+              "total": 26032
+            },
+            "fedavg": {
+              "accuracy_percent": 93.54640442532268,
+              "correct": 24352,
+              "total": 26032
+            },
+            "ta": {
+              "accuracy_percent": 91.29917025199754,
+              "correct": 23767,
+              "total": 26032
+            },
+            "ties": {
+              "accuracy_percent": 88.39505224339274,
+              "correct": 23011,
+              "total": 26032
+            }
+          }
+        },
+        "16": {
+          "methods": {
+            "native_fr48": {
+              "accuracy_percent": 94.5759065765212,
+              "correct": 24620,
+              "total": 26032
+            },
+            "fedavg": {
+              "accuracy_percent": 94.22633681622618,
+              "correct": 24529,
+              "total": 26032
+            },
+            "ta": {
+              "accuracy_percent": 93.6578057775046,
+              "correct": 24381,
+              "total": 26032
+            },
+            "ties": {
+              "accuracy_percent": 89.79333128457283,
+              "correct": 23375,
+              "total": 26032
+            }
+          }
+        }
+      }
+    }
+  },
+  "configuration": {
+    "factor_blocks": 48,
+    "LoRA_rank": [
+      8,
+      16
+    ],
+    "clients": 50,
+    "local_epochs": 1,
+    "batch_size": 32,
+    "client_optimizer": "AdamW",
+    "classifier": "uniform aggregation",
+    "rounds": {
+      "20news": 100,
+      "eurosat": 50,
+      "svhn": 50
+    },
+    "TA_beta": 2,
+    "TIES_density": {
+      "20news": 0.1,
+      "eurosat": 0.9,
+      "svhn": 0.1
+    }
+  }
+}
